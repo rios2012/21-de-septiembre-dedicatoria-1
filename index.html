@@ -94,7 +94,7 @@
             left: 50%;
             transform: translateX(-50%) translateY(100%);
             z-index: 10;
-            animation: growFromBottom 2.2s cubic-bezier(0.17, 0.89, 0.32, 1.1) 0.3s forwards;
+            animation: growFromBottom 2.2s cubic-bezier(0.17, 0.89, 0.32, 1.1) 0.3s 1 forwards;
             transform-origin: bottom center;
         }
 
@@ -288,9 +288,20 @@
         }
 
         /* Adaptación automática para celulares */
+        @media (prefers-reduced-motion: reduce) {
+            .bouquet-emergence-wrapper,
+            .bouquet-sway-wrapper,
+            .butterfly-glow,
+            .star {
+                animation-iteration-count: 1;
+            }
+        }
+
         @media (max-width: 600px) {
             body {
+                min-height: 100vh;
                 min-height: 100dvh;
+                height: 100vh;
                 height: 100dvh;
             }
 
