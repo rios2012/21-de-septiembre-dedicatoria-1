@@ -123,10 +123,10 @@
         }
 
         .bouquet-svg {
-            width: 480px;
-            height: 620px;
-            max-width: 95vw;
-            max-height: 70vh;
+            /* Se adapta automáticamente al ancho Y al alto de la pantalla */
+            width: min(90vw, 55vh, 480px);
+            height: auto;
+            aspect-ratio: 500 / 650;
             display: block;
             filter: drop-shadow(0 15px 25px rgba(255, 230, 0, 0.8));
         }
@@ -287,15 +287,107 @@
             background: #fff;
         }
 
-        /* Adaptación a pantallas pequeñas */
-        @media (max-width: 480px) {
-            .main-title { font-size: 2.7rem; }
-            .subtitle { font-size: 1.05rem; }
-            .bouquet-svg { width: 360px; height: 500px; }
-            .action-btn-container { bottom: 20px; right: 20px; }
-            #front-wrapper text { font-size: 26px; }
-            .envelope-btn { width: 55px; height: 55px; }
-            .envelope-btn svg { width: 26px; height: 26px; }
+        /* Adaptación automática para celulares */
+        @media (max-width: 600px) {
+            body {
+                min-height: 100dvh;
+                height: 100dvh;
+            }
+
+            .text-container {
+                margin-top: clamp(16px, 5vh, 45px);
+                padding: 0 12px;
+            }
+
+            .main-title {
+                font-size: clamp(2rem, 9vw, 2.7rem);
+                line-height: 1.05;
+                margin-bottom: 5px;
+            }
+
+            .subtitle {
+                font-size: clamp(0.82rem, 3.8vw, 1.05rem);
+            }
+
+            .bouquet-emergence-wrapper {
+                bottom: clamp(-18px, -2vh, -5px);
+            }
+
+            .bouquet-svg {
+                width: min(90vw, 55vh, 480px);
+                height: auto;
+            }
+
+            .action-btn-container {
+                bottom: max(14px, env(safe-area-inset-bottom));
+                right: max(14px, env(safe-area-inset-right));
+            }
+
+            #front-wrapper text {
+                font-size: clamp(22px, 5.5vw, 28px);
+            }
+
+            .envelope-btn {
+                width: clamp(50px, 14vw, 60px);
+                height: clamp(50px, 14vw, 60px);
+            }
+
+            .envelope-btn svg {
+                width: clamp(24px, 7vw, 30px);
+                height: clamp(24px, 7vw, 30px);
+            }
+
+            .modal-card {
+                width: min(88vw, 380px);
+                padding: clamp(20px, 6vw, 30px);
+            }
+
+            .modal-card h2 {
+                font-size: clamp(1.8rem, 8vw, 2.2rem);
+            }
+        }
+
+        /* Celulares en horizontal y laptops con poca altura */
+        @media (max-height: 700px) {
+            .text-container {
+                margin-top: 2vh;
+            }
+
+            .main-title {
+                font-size: clamp(1.8rem, 6vh, 3rem);
+            }
+
+            .subtitle {
+                font-size: clamp(0.75rem, 2.4vh, 1rem);
+            }
+
+            .bouquet-svg {
+                width: min(72vw, 58vh, 440px);
+            }
+
+            .grass-container {
+                height: 120px;
+            }
+
+            .action-btn-container {
+                bottom: 12px;
+                right: 12px;
+            }
+        }
+
+        /* Pantallas muy estrechas */
+        @media (max-width: 360px) {
+            .main-title {
+                font-size: 1.85rem;
+            }
+
+            .subtitle {
+                font-size: 0.78rem;
+            }
+
+            .bouquet-svg {
+                width: min(92vw, 52vh, 340px);
+            }
         }
     </style>
 </head>
